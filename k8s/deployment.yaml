@@ -2,8 +2,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: docker-demo-app-deployment
+  labels:
+    app: docker-demo-app
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: docker-demo-app
   template:
     metadata:
       labels:
@@ -11,7 +16,7 @@ spec:
     spec:
       containers:
         - name: docker-demo-cont
-          image: frostfrost/dockerfirstapp
+          image: frostfrost/dockerfirstapp:docker-demo-service
           ports:
             - containerPort: 8081
           readinessProbe:
