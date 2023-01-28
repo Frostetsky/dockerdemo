@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Ingress
+metadata:
+  name: docker-demo-app-ingress
+spec:
+  ingressClassName:
+  rules:
+    - host: arch.homework
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: docker-demo-service
+              servicePort: 8081
